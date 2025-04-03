@@ -3,10 +3,11 @@ import { FormService } from '../form.service';
 import { ItemCheckList } from '../item-check-list';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { SelectedValueComponent } from '../selected-value/selected-value.component';
 
 @Component({
   selector: 'app-select-all-form',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, SelectedValueComponent],
   templateUrl: './select-all-form.component.html',
   styleUrl: './select-all-form.component.scss'
 })
@@ -21,7 +22,12 @@ export class SelectAllFormComponent {
   }
 
   onCheckAllChange() {
-    this.itemList.forEach((item)=> item.checked = !item.checked);
+    if (this.isAllChecked()) {
+      this.itemList.forEach((item)=> item.checked = !item.checked);
+    }
+    else {
+      this.itemList.forEach((item)=> item.checked = true);
+    }
   }
 
   onClickClearAll() {
