@@ -1,0 +1,11 @@
+<div><input type="checkbox" (change)="onCheckAllChange()" [checked]="isAllChecked()"/>Select All</div>
+<div>
+  <ul>
+    @for (item of itemList; track $index) {
+    <li>
+      <input type="checkbox" [(ngModel)]="item.checked"/>{{ item.item }}
+    </li>
+    }
+  </ul>
+</div>
+<div><button (click)="onClickClearAll()">Clear All</button></div>
